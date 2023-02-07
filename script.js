@@ -1,3 +1,15 @@
+const numberBtn = document.querySelectorAll('.number');
+const operatorBtn = document.querySelectorAll('.operator')
+const clearBtn = document.querySelector('.clear');
+const plusMinusBtn = document.querySelector('.plus-minus');
+const percentBtn = document.querySelector('.percent');
+const decimalBtn = document.querySelector('.decimal');
+const equalBtn = document.querySelector('.equals');
+const display = document.querySelector('.display');
+let num1 = null;
+let num2 = null;
+let currentOperation = null;
+
 function add(x, y) {
 	return x + y;
 }
@@ -29,3 +41,92 @@ function operate(operator, x, y) {
 	
 }
 
+// numberBtn.addEventListener('click', (event) => {
+// 	display.textContent += event.target.value;
+// });
+
+numberBtn.forEach(btn => {
+	btn.onclick = function (btn) {
+		display.textContent += btn.target.value;
+	}
+});
+
+operatorBtn.forEach(btn => {
+	btn.onclick = function (btn) {
+		num1 = Number(display.textContent)
+		display.textContent = ""
+		currentOperation = btn.target.value
+
+	}
+});
+
+equalBtn.addEventListener('click', () => {
+	num2 = Number(display.textContent)
+	if (currentOperation == "+") {
+		display.textContent = num1 + num2;
+	} else if (currentOperation == "-") {
+		display.textContent = num1 - num2;
+	} else if (currentOperation == "*") {
+		display.textContent = num1 * num2;
+	} else if (currentOperation == "/" ) {
+		display.textContent = num1 / num2;
+	}
+})
+
+// zeroBtn.addEventListener('click', () => {
+// 	display.textContent += "0";	
+// });
+// oneBtn.addEventListener('click', () => {
+// 	display.innerText += "1";	
+// });
+// twoBtn.addEventListener('click', () => {
+// 	display.innerText += "2";	
+// });
+// threeBtn.addEventListener('click', () => {
+// 	display.innerText += "3";	
+// });
+// fourBtn.addEventListener('click', () => {
+// 	display.innerText += "4";	
+// });
+// fiveBtn.addEventListener('click', () => {
+// 	display.innerText += "5";	
+// });
+// sixBtn.addEventListener('click', () => {
+// 	display.innerText += "6";	
+// });
+// sevenBtn.addEventListener('click', () => {
+// 	display.innerText += "7";	
+// });
+// eightBtn.addEventListener('click', () => {
+// 	display.innerText += "8";	
+// });
+// nineBtn.addEventListener('click', () => {
+// 	display.innerText += "9";	
+// });
+// percentBtn.addEventListener('click', () => {
+// 	display.innerText = "%";	
+// });
+// plusMinusBtn.addEventListener('click', () => {
+// 	display.innerText = "plus minus";	
+// });
+// divideBtn.addEventListener('click', () => {
+// 	display.innerText = "/";	
+// });
+// multiplyBtn.addEventListener('click', () => {
+// 	display.innerText = "*";	
+// });
+// subtractBtn.addEventListener('click', () => {
+// 	display.innerText = "-";	
+// });
+// addBtn.addEventListener('click', () => {
+// 	display.innerText = "+";	
+// });
+// decimalBtn.addEventListener('click', () => {
+// 	display.innerText = ".";	
+// });
+// equalBtn.addEventListener('click', () => {
+// 	display.innerText = "=";	
+// });
+// clearBtn.addEventListener('click', () => {
+// 	display.innerText = "";	
+// });
