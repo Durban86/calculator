@@ -2,7 +2,7 @@ const numberBtn = document.querySelectorAll('.number');
 const operatorBtn = document.querySelectorAll('.operator')
 const clearBtn = document.querySelector('.clear');
 const plusMinusBtn = document.querySelector('.plus-minus');
-const percentBtn = document.querySelector('.percent');
+const delBtn = document.querySelector('.del');
 const decimalBtn = document.querySelector('.decimal');
 const equalBtn = document.querySelector('.equals');
 const display = document.querySelector('.display');
@@ -47,8 +47,14 @@ function operate(operator, x, y) {
 
 numberBtn.forEach(btn => {
 	btn.onclick = function (btn) {
-		display.textContent += btn.target.value;
-	}
+		if (display.textContent == "0" && btn.target.value != "0") {
+			display.textContent = btn.target.value;
+		} else if (display.textContent == "0" && btn.target.value == "0"){
+			display.textContent = "0";
+		} else {
+			display.textContent += btn.target.value;
+		}
+	} 
 });
 
 operatorBtn.forEach(btn => {
@@ -71,8 +77,23 @@ equalBtn.addEventListener('click', () => {
 	} else if (currentOperation == "/" ) {
 		display.textContent = num1 / num2;
 	}
-})
+});
 
+plusMinusBtn.addEventListener('click', () => {
+	display.textContent = display.textContent * -1;
+});
+
+decimalBtn.addEventListener('click', () => {
+	display.textContent += ".";
+});
+
+clearBtn.addEventListener('click', () => {
+	display.textContent = "0";
+});
+
+delBtn.addEventListener('click', () => {
+	display.textContent = display.textContent.slice(0, -1);
+});
 // zeroBtn.addEventListener('click', () => {
 // 	display.textContent += "0";	
 // });
